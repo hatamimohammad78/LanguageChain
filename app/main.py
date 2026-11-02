@@ -11,7 +11,7 @@ def main():
     setup_logging(settings.log_level)
     log = logging.getLogger("languagechain")
 
-    db = Database(settings.database_path)
+    db = Database(settings.database_path, settings.database_url if settings.database_backend == "postgres" else "")
     db.initialize()
     repo = Repository(db)
 
